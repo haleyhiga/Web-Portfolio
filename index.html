@@ -1,143 +1,376 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="haley-logo.jpg">
+    <link rel="icon" type="image/x-icon" href="images/haley-logo.png">
     <script src="https://unpkg.com/vue@3"></script>
     <script src="https://kit.fontawesome.com/b704c00148.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="custom.css">
     <title>Haley Higa</title>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'navy': '#0F172A',
+                        'slate': '#1E293B',
+                        'slate-light': '#334155',
+                        'off-white': '#F1F5F9',
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 
-<body>
-    <nav>
-        <div class="nav-container">
-          <div class="logo">
-            <a href="index.html">
-                <img src="haley-logo.jpg" alt="haley-logo">
-                <span>Haley Higa</span>
-            </a>
-          </div>
-          <ul class="nav-links">
-            <li><a href="#about" class="nav-link">About Me</a></li>
-            <li><a href="#projects" class="nav-link">Projects</a></li>
-            <li><a href="#contact" class="nav-link">Contact</a></li>
-            <li><a href="https://www.haleyhiga.com/haley-resume.pdf" target="_blank">Resume</a></li>
-          </ul>
+<body class="bg-navy text-off-white transition-colors duration-300">
+    <!-- Nav -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-navy/80 backdrop-blur-md border-b border-slate-light/50">
+        <div class="max-w-[1089px] mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
+            <div class="flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-3">
+                <!-- Dark/light mode (hidden on mobile) -->
+                <button id="theme-toggle" class="hidden sm:flex items-center gap-2 sm:gap-3 group">
+                    <div class="relative w-12 sm:w-14 h-6 sm:h-7 bg-slate-light rounded-full border-2 border-slate-light transition-all duration-300">
+                        <div class="toggle-circle absolute top-0.5 left-0.5 w-4 sm:w-5 h-4 sm:h-5 bg-navy rounded-full transition-all duration-300"></div>
+                    </div>
+                    <span class="text-xs sm:text-sm text-slate-300 font-medium">Dark Mode</span>
+                </button>
+                
+                <ul class="flex flex-wrap gap-3 sm:gap-6 lg:gap-8 list-none items-center justify-center bg-slate px-4 sm:px-6 lg:px-8 py-2 sm:py-3 rounded-full shadow-lg border border-slate-light/50 text-xs sm:text-sm">
+                    <li><a href="#about" class="nav-link text-slate-300 transition-colors no-underline font-medium">About</a></li>
+                    <li><a href="#projects" class="nav-link text-slate-300 transition-colors no-underline font-medium">Projects</a></li>
+                    <li><a href="#contact" class="nav-link text-slate-300 transition-colors no-underline font-medium">Contact</a></li>
+                    <li><a href="https://www.haleyhiga.com/haley-resume.pdf" target="_blank" class="text-slate-300 transition-colors no-underline font-medium">Resume</a></li>
+                </ul>
+                
+                <!-- Spacer on larger screens -->
+                <div class="hidden sm:block w-32"></div>
+            </div>
         </div>
     </nav>
 
-    <div class="header-section fade-in">
-        <h1 id="typewriter"></h1>
-        <h2>A recent Computer Science graduate</h2>
-        <h4>I develop projects in Python, Javascript, and C++</h4>
-        <a id="resume-button" href="https://www.haleyhiga.com/haley-resume.pdf" target="_blank">View Resume</a>
-        <a id="contact-button" href="#contact">Contact Me</a>
+
+<!-- Hero -->
+<section class="hero-grid min-h-screen flex items-center fade-in visible">
+  <div class="max-w-[1089px] mx-auto px-8 w-full">
+
+      <!-- Seperate into two columns -->
+      <div class="flex flex-col md:flex-row items-center justify-between gap-12 relative z-10">
+
+          <!-- Text on left -->
+          <div class="flex-1 text-left">
+              <img src="images/haley-logo.png"
+                   class="w-24 h-24 rounded-full mb-8 ring-2 ring-blue-500/50">
+
+              <h1 class="text-4xl md:text-7xl font-bold mb-6">
+                  <span id="typewriter"></span>
+              </h1>
+
+              <h2 class="text-2xl md:text-3xl text-slate-300 mb-4">
+                  A recent Computer Science graduate
+              </h2>
+
+              <p class="text-xl text-slate-400 mb-8 max-w-3xl">
+                  I love developing projects in Python, Javascript, and C++.
+              </p>
+
+              <div class="flex gap-4 mb-8">
+                  <a href="https://www.linkedin.com/in/haley-higa-9562072ab" target="_blank"
+                     class="w-12 h-12 flex items-center justify-center rounded-full bg-slate hover:bg-blue-500">
+                      <i class="fa-brands fa-linkedin"></i>
+                  </a>
+
+                  <a href="https://github.com/haleyhiga" target="_blank"
+                     class="w-12 h-12 flex items-center justify-center rounded-full bg-slate hover:bg-blue-500">
+                      <i class="fa-brands fa-github"></i>
+                  </a>
+              </div>
+
+          
+          </div>
+
+          <!-- Animation -->
+          <div class="flex-1 hidden md:flex justify-end">
+              <dotlottie-wc
+                  src="https://lottie.host/5a1176ed-4e25-4d11-8c72-e8ecabc185c3/OKTYfbX6zf.lottie"
+                  style="width: 420px; height: 420px"
+                  autoplay
+                  loop>
+              </dotlottie-wc>
+          </div>
+
+      </div>
+  </div>
+</section>
+
+    <!-- Timeline -->
+    <div class="max-w-[1089px] mx-auto px-8 py-16 fade-in">
+        <h2 class="text-4xl md:text-5xl md:pt-55 font-bold text-off-white mb-12 text-center relative inline-block pb-5">
+            My Journey
+            <span class="absolute bottom-0 left-0 w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></span>
+          </h2>
+        
+        <div class="relative">
+            <!-- Timeline Line -->
+            <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-blue-500 to-purple-500 hidden md:block"></div>
+            
+            <!-- Timeline Items -->
+            <div class="space-y-12">
+                <!-- Item 1 -->
+                <div class="relative flex items-center md:justify-start">
+                    <div class="w-full md:w-1/2 md:pr-12 md:text-right">
+                        <div class="bg-slate border border-slate-light/50 rounded-xl p-6 hover:border-blue-500/50 transition-all duration-300">
+                            <span class="text-blue-400 text-sm font-semibold">2022</span>
+                            <h3 class="text-xl font-bold text-off-white mt-2 mb-2">Started Computer Science Journey</h3>
+                            <p class="text-slate-400">Began pursuing B.S. in Computer Science at Utah Tech University</p>
+                        </div>
+                    </div>
+                    <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-blue-500 rounded-full border-4 border-navy hidden md:block"></div>
+                </div>
+                
+                <!-- Item 2 -->
+                <div class="relative flex items-center md:justify-end">
+                    <div class="w-full md:w-1/2 md:pl-12">
+                        <div class="bg-slate border border-slate-light/50 rounded-xl p-6 hover:border-blue-500/50 transition-all duration-300">
+                            <span class="text-purple-400 text-sm font-semibold">2022-2024</span>
+                            <h3 class="text-xl font-bold text-off-white mt-2 mb-2">Academic Awards</h3>
+                            <p class="text-slate-400">Achieved President's List 5 semesters, maintained cumulative 3.91 GPA</p>
+                        </div>
+                    </div>
+                    <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-purple-500 rounded-full border-4 border-navy hidden md:block"></div>
+                </div>
+                
+                <!-- Item 3 -->
+                <div class="relative flex items-center md:justify-start">
+                    <div class="w-full md:w-1/2 md:pr-12 md:text-right">
+                        <div class="bg-slate border border-slate-light/50 rounded-xl p-6 hover:border-blue-500/50 transition-all duration-300">
+                            <span class="text-blue-400 text-sm font-semibold">May 2025</span>
+                            <h3 class="text-xl font-bold text-off-white mt-2 mb-2">Graduated Magna Cum Laude</h3>
+                            <p class="text-slate-400">B.S. Computer Science minor in Information Technology from Utah Tech University</p>
+                        </div>
+                    </div>
+                    <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-blue-500 rounded-full border-4 border-navy hidden md:block"></div>
+                </div>
+                                
+                <!-- Item 4 -->
+                <div class="relative flex items-center md:justify-end">
+                  <div class="w-full md:w-1/2 md:pl-12">
+                      <div class="bg-slate border border-slate-light/50 rounded-xl p-6 hover:border-blue-500/50 transition-all duration-300">
+                          <span class="text-purple-400 text-sm font-semibold">September 2025 - November 2025</span>
+                          <h3 class="text-xl font-bold text-off-white mt-2 mb-2">AI Engineer Intern @ Smart Engineers Group</h3>
+                          <p class="text-slate-400">Participated in Agile project management, cleaned datasets, Researched architecture for multimodal AI video agents using OpenCV, LangChain/LangGraph, STT/TTS APIs, and Multimodal RAG systems.</p>
+                      </div>
+                  </div>
+                  <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-purple-500 rounded-full border-4 border-navy hidden md:block"></div>
+              </div>
+              
+
+                <!-- Item 5 -->
+                <div class="relative flex items-center md:justify-start">
+                  <div class="w-full md:w-1/2 md:pr-12 md:text-right">
+                      <div class="bg-slate border border-slate-light/50 rounded-xl p-6 hover:border-blue-500/50 transition-all duration-300">
+                          <span class="text-blue-400 text-sm font-semibold">October 2025 - Current</span>
+                          <h3 class="text-xl font-bold text-off-white mt-2 mb-2">Software Developer Intern @ Dynamic Active</h3>
+                          <p class="text-slate-400">Collaborated with others in Git, implemented frontend features using NextJS, React, React Query, Typescript, and TailwindCSS.</p>
+                      </div>
+                  </div>
+                  <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-blue-500 rounded-full border-4 border-navy hidden md:block"></div>
+              </div>
+            </div>
+        </div>
     </div>
 
     <div id="app" v-cloak>
-        <div id="about" class="about-section">
-            <h1>About Me</h1>
-          
-            <div class="about-menu">
-              <h4 :class="{ active: tab === 'education' }" @click="tab = 'education'">Education</h4>
-              <h4 :class="{ active: tab === 'personal' }" @click="tab = 'personal'">Personal</h4>
+        <!-- About Section -->
+        <div id="about" class="max-w-[1089px] mx-auto px-8 py-20 fade-in">
+            <div class="mb-12">
+              <h2 class="text-4xl md:text-5xl md:pt-55 font-bold text-off-white mb-12 text-center relative inline-block pb-5">
+                About Me
+                    <span class="absolute bottom-0 left-0 w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></span>
+                </h2>
+                
+                <!-- Tab Menu -->
+                <div class="flex gap-2 mb-8 bg-slate p-1 rounded-lg w-fit border border-slate-light/50">
+                    <button @click="tab = 'education'" 
+                            :class="tab === 'education' ? 'bg-blue-500 text-white shadow-lg' : 'text-slate-300 hover:text-white'"
+                            class="px-6 py-3 rounded-md text-base font-medium transition-all">
+                        Education
+                    </button>
+                    <button @click="tab = 'personal'" 
+                            :class="tab === 'personal' ? 'bg-blue-500 text-white shadow-lg' : 'text-slate-300 hover:text-white'"
+                            class="px-6 py-3 rounded-md text-base font-medium transition-all">
+                        Personal
+                    </button>
+                </div>
             </div>
           
-            <div class="about-content fade-in">
-              <img :src="aboutData[tab].image" :alt="tab" id="about-image" />
-              <div class="about-text">
-                <h4>{{ aboutData[tab].text }}</h4>
+            <div class="about-content fade-in flex flex-col md:flex-row gap-10 items-start">
+                <img :src="aboutData[tab].image" :alt="tab" 
+                     class="w-full md:w-80 h-80 object-cover rounded-2xl shadow-lg border border-slate-light/50" />
+                <div class="flex-1">
+                    <p class="text-slate-300 leading-relaxed mb-6 text-lg">{{ aboutData[tab].text }}</p>
           
-                <ul v-if="tab === 'education'">
-                  <li>B.S. in Computer Science, GPA 3.91 (May 2025)</li>
-                  <li>Magna Cum Laude, IT Minor</li>
-                  <li>President's List (5 semesters)</li>
-                  <li>Non-Resident Presidential Scholarship recipient</li>
-                  <li>Students of Computer Science Club</li>
-                </ul>
+                    <ul v-if="tab === 'education'" class="space-y-3 mb-6 text-slate-300 text-base">
+                        <li class="flex items-start">
+                            <span class="text-blue-400 mr-2">•</span>
+                            B.S. in Computer Science, GPA 3.91 (May 2025)
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-400 mr-2">•</span>
+                            Magna Cum Laude, IT Minor
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-400 mr-2">•</span>
+                            President's List (5 semesters)
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-400 mr-2">•</span>
+                            Non-Resident Presidential Scholarship recipient
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-400 mr-2">•</span>
+                            Students of Computer Science Club
+                        </li>
+                    </ul>
           
-                <div class="skills-container">
-                    <div v-if="tab === 'education'" v-for="skill in skills" :key="skill">{{ skill }}</div>
-                    <div v-else v-for="hobby in hobbies" :key="hobby">{{ hobby }}</div>
+                    <div class="flex flex-wrap gap-3">
+                        <span v-if="tab === 'education'" v-for="skill in skills" :key="skill" 
+                              class="px-4 py-2 bg-slate text-slate-300 rounded-full text-base font-medium border border-slate-light/50 hover:border-blue-500/50 transition-colors">
+                            {{ skill }}
+                        </span>
+                        <span v-else v-for="hobby in hobbies" :key="hobby" 
+                              class="px-4 py-2 bg-slate text-slate-300 rounded-full text-base font-medium border border-slate-light/50 hover:border-blue-500/50 transition-colors">
+                            {{ hobby }}
+                        </span>
+                    </div>
                 </div>
-              </div>
             </div>
         </div>
 
-
-        
-        <div class="projects-section" id="projects">
-            <h1>Projects</h1>
-          
-            <div class="projects-menu">
-              <h4 :class="{ active: selectedCategory === 'All' }" @click="changeCategory('All')">Featured</h4>
-              <h4 :class="{ active: selectedCategory === 'AI / ML' }" @click="changeCategory('AI / ML')">AI / ML</h4>
-              <h4 :class="{ active: selectedCategory === 'Databases' }" @click="changeCategory('Databases')">Databases</h4>
-              <h4 :class="{ active: selectedCategory === 'WebGL' }" @click="changeCategory('WebGL')">WebGL</h4>
-            </div>
-          
-            <div class="swiper projects-container">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide" v-for="project in allProjects" :key="project.title" 
-                     v-show="isProjectVisible(project)">
-                  <div class="project-card fade-in">
-                    <img :src="project.image" :alt="project.title">
-                    <h3>{{ project.title }}</h3>
-                    <p>{{ project.description }}</p>
-                    <a :href="project.link" target="_blank">View Project</a>
-                  </div>
+        <!-- Projects Section -->
+        <div class="projects-section max-w-[1089px] mx-auto md:pt-55 px-6 py-20" id="projects">
+            <div class="mb-12">
+              <h2 class="text-4xl md:text-5xl md:pt-55 font-bold text-off-white mb-12 text-center relative inline-block pb-5">
+                Projects
+                    <span class="absolute bottom-0 left-0 w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></span>
+                </h2>
+                
+                <!-- Category Menu -->
+                <div class="flex flex-wrap gap-2 bg-slate p-1 rounded-lg w-fit border border-slate-light/50">
+                    <button @click="changeCategory('All')" 
+                            :class="selectedCategory === 'All' ? 'bg-blue-500 text-white shadow-lg' : 'text-slate-300 hover:text-white'"
+                            class="px-6 py-3 rounded-md text-base font-medium transition-all">
+                        Featured
+                    </button>
+                    <button @click="changeCategory('AI / ML')" 
+                            :class="selectedCategory === 'AI / ML' ? 'bg-blue-500 text-white shadow-lg' : 'text-slate-300 hover:text-white'"
+                            class="px-6 py-3 rounded-md text-base font-medium transition-all">
+                        AI / ML
+                    </button>
+                    <button @click="changeCategory('Databases')" 
+                            :class="selectedCategory === 'Databases' ? 'bg-blue-500 text-white shadow-lg' : 'text-slate-300 hover:text-white'"
+                            class="px-6 py-3 rounded-md text-base font-medium transition-all">
+                        Databases
+                    </button>
+                    <button @click="changeCategory('WebGL')" 
+                            :class="selectedCategory === 'WebGL' ? 'bg-blue-500 text-white shadow-lg' : 'text-slate-300 hover:text-white'"
+                            class="px-6 py-3 rounded-md text-base font-medium transition-all">
+                        WebGL
+                    </button>
                 </div>
-              </div>
-              
-              <!-- Empty state message -->
-              <div v-if="!allProjects.some(p => isProjectVisible(p))" class="no-projects-message">
-                <p>No projects in this category yet. Check back soon!</p>
-              </div>
-          
-              <div class="swiper-button-next"></div>
-              <div class="swiper-button-prev"></div>
             </div>
           
-            <div class="swiper-pagination"></div>
+            <div class="swiper projects-container mb-12">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" 
+                         v-for="project in allProjects" :key="project.title" 
+                         v-show="isProjectVisible(project)">
+                        <div class="project-card fade-in bg-slate border border-slate-light/50 rounded-2xl p-8 shadow-lg hover:shadow-blue-500/10 hover:border-blue-500/50 transition-all duration-300 h-full flex flex-col">
+                            <div class="bg-navy rounded-xl p-6 mb-6 flex items-center justify-center h-56 border border-slate-light/30">
+                                <img :src="project.image" :alt="project.title" 
+                                     class="max-w-full max-h-full object-contain">
+                            </div>
+                            <h3 class="text-2xl font-semibold text-off-white mb-3">{{ project.title }}</h3>
+                            <p class="text-base text-slate-400 mb-6 flex-grow leading-relaxed">{{ project.description }}</p>
+                            <a :href="project.link" target="_blank" 
+                               class="inline-flex items-center gap-2 text-base font-medium text-blue-400 hover:text-blue-300 transition-colors no-underline">
+                                View Project
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+              
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination mt-8"></div>
+            </div>
         </div>
     </div>
-    <!-- end vue -->
 
-    <div class="contact-section fade-in" id="contact">
-        <h1>Contact</h1>
-        <form action="https://formspree.io/f/xbloaryw" method="POST">
-          <div class="form-group">
-            <input type="text" name="name" id="name" placeholder="Your name" required>
-          </div>
+    <!-- Contact Section -->
+    <div class="contact-section fade-in max-w-[1089px] mx-auto md:pt-55 px-8 py-20" id="contact">
+      <h2 class="text-4xl md:text-5xl md:pt-55 font-bold text-off-white mb-12 text-center relative inline-block pb-5">
+        Contact Me
+            <span class="absolute bottom-0 left-0 w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></span>
+        </h2>
+        <p class="text-slate-300 mb-10 leading-relaxed mt-6 text-lg max-w-3xl">
+            Feel free to send me a message and I will get back to you as soon as possible!
+        </p>
+        
+        <form action="https://formspree.io/f/xbloaryw" method="POST" class="space-y-6 max-w-3xl">
+            <div>
+                <label for="name" class="block text-base font-medium text-slate-300 mb-2">Name</label>
+                <input type="text" name="name" id="name" placeholder="Your name" required
+                       class="w-full px-5 py-4 border border-slate-light/50 rounded-lg bg-slate text-off-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-base">
+            </div>
       
-          <div class="form-group">
-            <input type="email" name="email" id="email" placeholder="Your email" required>
-          </div>
+            <div>
+                <label for="email" class="block text-base font-medium text-slate-300 mb-2">Email</label>
+                <input type="email" name="email" id="email" placeholder="your.email@example.com" required
+                       class="w-full px-5 py-4 border border-slate-light/50 rounded-lg bg-slate text-off-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-base">
+            </div>
       
-          <div class="form-group">
-            <textarea name="message" id="message" rows="5" placeholder="Your message" required></textarea>
-          </div>
+            <div>
+                <label for="message" class="block text-base font-medium text-slate-300 mb-2">Message</label>
+                <textarea name="message" id="message" rows="6" placeholder="Your message..." required
+                          class="w-full px-5 py-4 border border-slate-light/50 rounded-lg bg-slate text-off-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none text-base"></textarea>
+            </div>
       
-          <button type="submit">Send</button>
+            <button type="submit" 
+                    class="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg font-medium hover:from-blue-600 hover:to-purple-600 transition-all shadow-lg hover:shadow-blue-500/25 text-base">
+                Send Message
+            </button>
         </form>
     </div>
 
-    <footer>
-        <p>Contact Me: (808) 393-1398 | Mililani, HI 96789 | D00480762@utahtech.edu</p>
-        <a href="https://www.linkedin.com/in/haley-higa-9562072ab" target="_blank" rel="noopener noreferrer">
-            <i class="fa-brands fa-linkedin" style="font-size: 20px;"></i>
-        </a>
-        <a href="https://github.com/haleyhiga" target="_blank">
-            <i class="fa-brands fa-square-github" style="font-size: 20px;"></i>
-        </a>
+    <!-- Footer -->
+    <footer class="bg-slate border-t border-slate-light/50 py-12 mt-20">
+        <div class="max-w-[1089px] mx-auto px-8 text-center">
+            <p class="text-slate-300 mb-4 font-medium text-lg">Haley Higa</p>
+            <p class="text-base text-slate-400 mb-6">Mililani, HI 96789 • D00480762@utahtech.edu</p>
+            <div class="flex justify-center gap-4">
+                <a href="https://www.linkedin.com/in/haley-higa-9562072ab" target="_blank" rel="noopener noreferrer" 
+                   class="w-12 h-12 flex items-center justify-center rounded-full bg-navy hover:bg-blue-500 transition-colors border border-slate-light/50">
+                    <i class="fa-brands fa-linkedin text-slate-300 hover:text-white text-xl"></i>
+                </a>
+                <a href="https://github.com/haleyhiga" target="_blank" 
+                   class="w-12 h-12 flex items-center justify-center rounded-full bg-navy hover:bg-blue-500 transition-colors border border-slate-light/50">
+                    <i class="fa-brands fa-github text-slate-300 hover:text-white text-xl"></i>
+                </a>
+            </div>
+        </div>
     </footer>
 
-    <div class="mouse-trail"></div>
+    <div class="mouse-trail fixed top-0 left-0 pointer-events-none z-[1000]"></div>
 
+    <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.11/dist/dotlottie-wc.js" type="module"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="app.js"></script>
 </body>
